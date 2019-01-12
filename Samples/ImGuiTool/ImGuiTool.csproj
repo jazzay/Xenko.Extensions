@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net461</TargetFramework>
+    <!-- Would like to make this .net core once Xenko is easier to build there -->
+    <!-- <TargetFramework>netcoreapp2.1</TargetFramework> -->
+    <!-- <RuntimeIdentifier>win-x64</RuntimeIdentifier> -->
+    <ApplicationIcon>Resources\Icon.ico</ApplicationIcon>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>ImGuiTool</RootNamespace>
+
+    <OutputPath>..\Bin\Windows\$(Configuration)\</OutputPath>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+
+    <!-- Force msbuild to check to rebuild this assembly instead of letting VS IDE guess -->
+    <DisableFastUpToDateCheck>true</DisableFastUpToDateCheck>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Xenko.ImGui\Xenko.ImGui.csproj" />
+    <!-- Needed for .net core -->
+    <!-- <PackageReference Include="Xenko" Version="3.1.0.1-beta01-0349" PrivateAssets="contentfiles;analyzers" /> -->
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="small_uv.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>
