@@ -4,6 +4,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <RootNamespace>Xenko.Extensions</RootNamespace>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
 
   <ItemGroup>
@@ -28,4 +29,12 @@
     <PackageReference Include="Xenko.Core" Version="3.1.0.1-beta01-0349" PrivateAssets="contentfiles;analyzers" />
     <PackageReference Include="Xenko.Core.Assets.CompilerApp" Version="3.1.0.1-beta01-0349" PrivateAssets="contentfiles; analyzers" IncludeAssets="build" />
   </ItemGroup>
+
+  <PropertyGroup>
+    <Version>1.0.0-alpha1</Version>
+    <InformationalVersion>This is a prerelease package</InformationalVersion>
+    <Description>ImGui integration for Xenko. Handles Input and Rendering within a Xenko Game.</Description>
+    <PackageTags>3D 2D Graphics Xenko Standard Game ImGui UI</PackageTags>
+  </PropertyGroup>  
+
 </Project>
