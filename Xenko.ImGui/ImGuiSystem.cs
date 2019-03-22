@@ -242,10 +242,10 @@ namespace Xenko.Extensions
             io.MouseDown[1] = input.IsMouseButtonDown(MouseButton.Right);
             io.MouseDown[2] = input.IsMouseButtonDown(MouseButton.Middle);
 
-            io.KeyAlt = input.IsKeyDown(Keys.LeftAlt);
-            io.KeyShift = input.IsKeyDown(Keys.LeftShift);
-            io.KeyCtrl = input.IsKeyDown(Keys.LeftCtrl);
-            // io.KeySuper = game.Input.IsKeyDown(???);
+            io.KeyAlt = input.IsKeyDown(Keys.LeftAlt) || input.IsKeyDown(Keys.LeftAlt);
+            io.KeyShift = input.IsKeyDown(Keys.LeftShift) || input.IsKeyDown(Keys.RightShift);
+            io.KeyCtrl = input.IsKeyDown(Keys.LeftCtrl) || input.IsKeyDown(Keys.RightCtrl);
+            io.KeySuper = input.IsKeyDown(Keys.LeftWin) || input.IsKeyDown(Keys.RightWin);
 
             ImGui.NewFrame();
         }
