@@ -54,6 +54,14 @@ namespace Xenko.Extensions
             Debug.Assert(effectSystem != null, "ImGuiSystem: EffectSystem must be available!");
 
             Initialize();
+
+            Enabled = true; // Force Update functions to be run
+            Visible = true; // Force Draw related functions to be run
+            UpdateOrder = input.UpdateOrder + 1;
+
+            // Include this new instance into our services and systems so that xenko fires our functions automatically
+            Services.AddService(this);
+            Game.GameSystems.Add(this);
         }
 
         public override void Initialize() 
@@ -199,7 +207,7 @@ namespace Xenko.Extensions
             fontTexture = newFontTexture;
         }
 
-        public new void Update(GameTime gameTime) 
+        public override void Update(GameTime gameTime)
         {
             ImGuiIOPtr io = ImGui.GetIO();
 
@@ -250,7 +258,9 @@ namespace Xenko.Extensions
             ImGui.NewFrame();
         }
 
-        public void Draw() 
+        public override bool BeginDraw() => true; // Tell xenko to execute EndDraw
+
+        public override void EndDraw()
         {
             ImGui.Render();
             RenderDrawLists(ImGui.GetDrawData());
