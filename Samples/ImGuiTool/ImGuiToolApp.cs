@@ -53,9 +53,6 @@ namespace ImGuiTool
 
         protected override void Update(GameTime gameTime)
         {
-            // must happen first!
-            imgui?.Update(gameTime);
-
             base.Update(gameTime);
 
             // show something interesting for now, later add controls that affect the TeaPot below!!
@@ -64,8 +61,6 @@ namespace ImGuiTool
 
         protected override void Draw(GameTime gameTime)
         {
-            base.Draw(gameTime);
-
             // Clear screen
             GraphicsContext.CommandList.Clear(GraphicsDevice.Presenter.BackBuffer, Color.CornflowerBlue);
             GraphicsContext.CommandList.Clear(GraphicsDevice.Presenter.DepthStencilBuffer, DepthStencilClearOptions.DepthBuffer | DepthStencilClearOptions.Stencil);
@@ -85,12 +80,8 @@ namespace ImGuiTool
             
             // Draw
             teapot.Draw(GraphicsContext, simpleEffect);
-        }
 
-        protected override void EndDraw(bool present)
-        {
-            imgui?.Draw();
-            base.EndDraw(present);
+            base.Draw(gameTime);
         }
-    }    
+    }
 }
